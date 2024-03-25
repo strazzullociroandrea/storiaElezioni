@@ -23,7 +23,7 @@ const fs = require("fs");
   );
   //reindirizzamento a cartella public con la form di login
   app.use("/storia", express.static(path.join(__dirname, "public")));
-  app.post("/getdata", async (request, response) => {
+  app.post("/storia/getdata", async (request, response) => {
       try {
           const res = fs.readFileSync("./risultati.json"); 
           response.json({ result: JSON.parse(res) });

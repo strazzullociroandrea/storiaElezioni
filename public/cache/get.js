@@ -1,5 +1,5 @@
 export const get = async () => {
-  const data = await fetch("/getdata", {
+  const data = await fetch("/storia/getdata", {
     method: "POST",
     headers: {
       "content-type": "application/json",

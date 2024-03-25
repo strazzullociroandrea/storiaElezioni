@@ -1,4 +1,4 @@
-import { get } from "../cache/get.js";
+
 const colors = [
   "#8e5ea2",
   "#3cba9f",
@@ -10,7 +10,7 @@ const colors = [
   "#28a745",
 ];
 
-export const viewData = async () => {
+export const viewData = async (get, element,stringa) => {
   const data = await get();
   const days = Object.keys(data.result);
   const partiti = Object.keys(data.result[days[0]]);
@@ -22,12 +22,12 @@ export const viewData = async () => {
     });
     valori.push({ data: day, value: temp });
   });
-  new Chart(document.getElementById("risultati"), {
+  new Chart(document.getElementById(element), {
     type: "bar",
     data: {
       labels: partiti,
       datasets: valori.map((valore, index) => ({
-        label: "Numero seggi " + valore.data,
+        label: stringa + valore.data,
         backgroundColor: colors[index],
         data: valore.value,
       })),
@@ -36,8 +36,15 @@ export const viewData = async () => {
       legend: { display: true },
       title: {
         display: true,
-        text: "Dati combinati dei giorni",
-      },
+        text: "",
+      },scales: {
+        xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: "marameo"
+          }
+        }]
+      }
     },
   });
 };

@@ -21,16 +21,34 @@ const fs = require("fs");
       extended: true,
     }),
   );
-  //reindirizzamento a cartella public con la form di login
   app.use("/storia", express.static(path.join(__dirname, "public")));
   app.post("/storia/getdata", async (request, response) => {
-      try {
-          const res = fs.readFileSync("./risultati.json"); 
-          response.json({ result: JSON.parse(res) });
-      } catch (error) {
-          console.error('Si è verificato un errore durante la lettura del file:', error);
-          response.status(500).json({ error: 'Errore durante la lettura del file' });
-      }
+    try {
+      const res = fs.readFileSync("./risultati.json");
+      response.json({ result: JSON.parse(res) });
+    } catch (error) {
+      console.error(
+        "Si è verificato un errore durante la lettura del file:",
+        error,
+      );
+      response
+        .status(500)
+        .json({ error: "Errore durante la lettura del file" });
+    }
+  });
+  app.post("/storia/getPercentuali", async (request, response) => {
+    try {
+      const res = fs.readFileSync("./percentuali.json");
+      response.json({ result: JSON.parse(res) });
+    } catch (error) {
+      console.error(
+        "Si è verificato un errore durante la lettura del file:",
+        error,
+      );
+      response
+        .status(500)
+        .json({ error: "Errore durante la lettura del file" });
+    }
   });
   const server = http.createServer(app);
   server.listen(10009, () => {

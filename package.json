@@ -1,0 +1,18 @@
+{
+    "name": "storia",
+    "version": "1.0.0",
+    "description": "Server nodejs per elezioni partito nazista",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node main.js"
+    },
+    "author": "Ciro Andrea Strazzullo & Mattia Graziano Pedizini",
+    "license": "ISC",
+    "dependencies": {
+        "@types/node": "^18.0.6",
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "express": "^4.19.2"
+    }
+}
